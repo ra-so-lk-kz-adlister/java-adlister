@@ -9,14 +9,14 @@ public class Ad {
     private int rating;
     private int price;
 
-    public Ad(long id, long userId, String title, int release_year, int rating, int price, String description) {
+    public Ad(long id, long userId, String title, int release_year, int rating, String description, int price) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.description = description;
     }
 
-    public Ad(long userId, String title, int release_year, int rating, int price, String description) {
+    public Ad(long userId, String title, int release_year, int rating, String description, int price) {
         this.userId = userId;
         this.title = title;
         this.description = description;
