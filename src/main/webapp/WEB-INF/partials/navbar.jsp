@@ -4,9 +4,9 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="/ads">Adlister</a>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/home">Home</a></li>
+                <li><a href="/ads">Home</a></li>
                 <li><a href="/ads">Ads</a></li>
-                <li><a href="/create-ad">Create AD</a></li>
+                <li><a href="/ads/create">Create AD</a></li>
             </ul>
 
 
