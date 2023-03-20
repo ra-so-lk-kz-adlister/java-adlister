@@ -1,0 +1,44 @@
+DROP DATABASE IF EXISTS arcade_db;
+
+CREATE DATABASE arcade_db;
+
+USE arcade_db;
+
+CREATE TABLE users (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(50),
+    user_email VARCHAR(100) NOT NULL,
+    user_password TEXT NOT NULL
+);
+
+CREATE TABLE arcade_ads (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    ad_name VARCHAR(100),
+    release_year INT NOT NULL,
+    rating INT NOT NULL,
+    description TEXT NOT NULL,
+    price INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+
+);
+
+CREATE TABLE ads_users (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    ad_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (ad_id) REFERENCES arcade_ads (id)
+);
+
+CREATE TABLE genre (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    genre TEXT NOT NULL
+);
+
+CREATE TABLE ads_genre (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ad_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (ad_id) REFERENCES arcade_ads (id)
+);
+
