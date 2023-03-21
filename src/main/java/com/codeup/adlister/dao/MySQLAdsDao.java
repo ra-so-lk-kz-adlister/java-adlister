@@ -1,13 +1,8 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
-import com.codeup.adlister.models.Config;
-import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,8 +53,8 @@ public class MySQLAdsDao implements Ads {
         try {
             String insertQuery = "INSERT INTO arcade_ads(user_id, ad_name, release_year, rating, description, price) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, ad.getUserId());
-            stmt.setString(2, ad.getTitle());
+            stmt.setLong(1, ad.getUser_id());
+            stmt.setString(2, ad.getAd_name());
             stmt.setInt(3, ad.getRelease_year());
             stmt.setInt(4, ad.getRating());
             stmt.setString(5, ad.getDescription());
@@ -75,8 +70,8 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-                rs.getLong("id"),
-                rs.getLong("user_id"),
+                rs.getInt("id"),
+                rs.getInt("user_id"),
                 rs.getString("ad_name"),
                 rs.getInt("release_year"),
                 rs.getInt("rating"),
