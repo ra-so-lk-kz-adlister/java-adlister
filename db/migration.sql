@@ -13,14 +13,13 @@ CREATE TABLE users (
 
 CREATE TABLE arcade_ads (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_id INT UNSIGNED NOT NULL,
+    user_id INT UNSIGNED NOT NULL, # Creator of ad
     ad_name VARCHAR(100),
     release_year INT NOT NULL,
     rating INT NOT NULL,
     description TEXT NOT NULL,
     price INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id)
-
 );
 
 CREATE TABLE ads_users (
@@ -39,6 +38,7 @@ CREATE TABLE genre (
 CREATE TABLE ads_genre (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ad_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (ad_id) REFERENCES arcade_ads (id)
+    genre_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (ad_id) REFERENCES arcade_ads (id),
+    FOREIGN KEY (genre_id) REFERENCES genre (id)
 );
-
