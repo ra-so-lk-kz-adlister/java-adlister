@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -6,20 +7,30 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
                 <li><a href="/ads">Ads</a></li>
-                <li><a href="/ads/create">Create AD</a></li>
+                <c:choose>
+                    <c:when test="${sessionScope.user != null}">
+                        <li><a href="/ads/create">Create AD</a></li>
+                        <br />
+                    </c:when>
+                    <c:otherwise>
+                        <li></li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
-
-
         </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/profile">Profile</a></li>
-            <c:if test="${sessionScope.user == null}">
-                <li><a href="/login.jsp">Login</a></li>
-            </c:if>
-            <c:if test="${sessionScope.user != null}">
-                <li><a href="/logout.jsp">Logout</a></li>
-            </c:if>
 
+        <ul class="nav navbar-nav navbar-right">
+            <c:choose>
+                <c:when test="${sessionScope.user == null}">
+                    <li><a href="login">Login</a></li>
+                    <br />
+                </c:when>
+                <c:otherwise>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <br />
+                </c:otherwise>
+            </c:choose>
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
