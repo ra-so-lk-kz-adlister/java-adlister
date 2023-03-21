@@ -23,6 +23,8 @@
                 <input type="hidden" name="id" value="${ad.id}" />
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>
+        </div>
+
     </c:forEach>
 </div>
 
