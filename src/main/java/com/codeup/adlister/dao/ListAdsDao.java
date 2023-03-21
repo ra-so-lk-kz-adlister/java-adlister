@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,11 @@ import java.util.List;
 //        return ad.getId();
 //    }
 //
+//    @Override
+//    public ResultSet findById(int userId) {
+//        return null;
+//    }
+
 //    private List<Ad> generateAds() {
 //        List<Ad> ads = new ArrayList<>();
 //        ads.add(new Ad(
@@ -54,5 +60,6 @@ import java.util.List;
 //            "Must have strong Java skills"
 //        ));
 //        return ads;
+//        return null;
 //    }
 //}
