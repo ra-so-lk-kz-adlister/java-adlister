@@ -2,7 +2,7 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.Config;
 import com.codeup.adlister.models.Ad;
-delete-function
+
 
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
@@ -40,13 +40,13 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public ResultSet findById(int userId) {
+    public List<Ad> findById(int userId) {
         try {
-            String insertQuery = "SELECT * FROM users WHERE id LIKE ?";
+            String insertQuery = "SELECT * FROM arcade_ads WHERE user_id = ?";
             PreparedStatement stmt = connection.prepareStatement(insertQuery);
             stmt.setInt(1, userId);
-            stmt.executeQuery();
-            return stmt.getResultSet();
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error searching for user.", e);
         }
