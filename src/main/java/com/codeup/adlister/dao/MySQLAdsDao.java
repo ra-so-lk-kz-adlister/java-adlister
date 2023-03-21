@@ -56,8 +56,8 @@ public class MySQLAdsDao implements Ads {
         try {
             String insertQuery = "INSERT INTO arcade_ads(user_id, ad_name, release_year, rating, description, price) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, ad.getUserId());
-            stmt.setString(2, ad.getTitle());
+            stmt.setLong(1, ad.getUser_id());
+            stmt.setString(2, ad.getAd_name());
             stmt.setInt(3, ad.getRelease_year());
             stmt.setInt(4, ad.getRating());
             stmt.setString(5, ad.getDescription());

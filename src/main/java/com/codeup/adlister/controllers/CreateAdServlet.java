@@ -14,30 +14,31 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        if (request.getSession().getAttribute("user") == null) {
-//            response.sendRedirect("/login");
-//            return;
-//        }
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("/login");
+            return;
+        }
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        User user = (User) request.getSession().getAttribute("user");
-//        Ad ad = new Ad(
-//            user.getId(),
-//            request.getParameter("title"),
-//            request.getParameter("description")
-//        );
-//        DaoFactory.getAdsDao().insert(ad);
-        String title = request.getParameter("title");
-        int release_year = Integer.parseInt(request.getParameter("releaseYear"));
-        int rating = Integer.parseInt(request.getParameter("rating"));
-        String[] genres = request.getParameterValues("genre");
-        String description = request.getParameter("description");
-        int price_in_cents = Integer.parseInt(request.getParameter("price"));
+        User user = (User) request.getSession().getAttribute("user");
+        //create an add with required parameters
+        Ad ad = new Ad(
+                user.getId(),
+                request.getParameter("title"),
+                Integer.parseInt(request.getParameter("releaseYear")),
+                Integer.parseInt(request.getParameter("rating")),
+                request.getParameter("description"),
+                Integer.parseInt(request.getParameter("price"))
+        );
+        //input the add into the DB
+        DaoFactory.getAdsDao().insert(ad);
 
-        System.out.println(title + release_year + rating + description + price_in_cents);
-        System.out.printf("Title: %s%nRelease Year: %d%nRating: %d%nDescription: %s%nPrice: %d%n", title, release_year, rating, description, price_in_cents);
+//        This is for being able to see the genre of each ad.
+        String[] genres = request.getParameterValues("genre");
+
+        System.out.printf("Title: %s%nRelease Year: %d%nRating: %d%nDescription: %s%nPrice: %d%nUser input:%s-%d%n", ad.getAd_name(), ad.getRelease_year(), ad.getRating(), ad.getDescription(), ad.getPrice(), user.getUsername(), ad.getUser_id());
 
         if (genres != null) {
             for (String genre : genres) {
