@@ -33,7 +33,6 @@ public class CreateAdServlet extends HttpServlet {
         int release_year = Integer.parseInt(request.getParameter("releaseYear"));
         int rating = Integer.parseInt(request.getParameter("rating"));
         String[] genres = request.getParameterValues("genre");
-        int[] genr;
         String description = request.getParameter("description");
         int price_in_cents = Integer.parseInt(request.getParameter("price"));
 
