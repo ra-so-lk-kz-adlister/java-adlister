@@ -6,9 +6,9 @@
     </jsp:include>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp">
+ <jsp:include page="/WEB-INF/partials/navbar.jsp">
     <jsp:param name="navbar" value="navbar" />
-</jsp:include>
+ </jsp:include>
 <div class="container bg-warning">
     <form method="post">
         <div class="form-group">
