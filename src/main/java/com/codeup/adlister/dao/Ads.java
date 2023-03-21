@@ -12,4 +12,7 @@ public interface Ads {
     Long insert(Ad ad);
 
     ResultSet findById(int userId);
+
+    void deleteAd(int id);
+
 }
