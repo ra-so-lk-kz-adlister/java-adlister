@@ -50,7 +50,6 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error searching for user.", e);
         }
     }
-
     @Override
     public Long insert(Ad ad) {
         try {
