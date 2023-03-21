@@ -8,7 +8,7 @@ INSERT INTO arcade_ads (user_id, ad_name, release_year, rating, description, pri
 VALUES (1 , 'Pacman', 1980, 4, 'Action maze chase, classic coin-op. Must have for any collector!', 1000),
        (2 , 'Area 51: Site 4', 1998, 5,
         'Area 51 is under attack from aliens, grab your gun and protect the base. Most iconic arcade gun game', 2000),
-       (3 , 'Cruis`n USA', 1994,
+       (3 , 'Cruis`n USA', 1994, 4,
         'Get behind the wheel and race across the USA. Put your skills the test against your friends', 3000),
        (4 , 'The Mandoalorian', 2021, 5,
         'In this action-packed pinball quest, players are transported to a galaxy far, far away as they play as the Mandalorian, teaming up with key allies and protecting Grogu, while battling dangerous enemies and forces across their journey.',
