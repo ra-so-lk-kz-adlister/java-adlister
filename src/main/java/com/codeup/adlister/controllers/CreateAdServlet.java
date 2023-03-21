@@ -18,18 +18,35 @@ public class CreateAdServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
-            .forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
+        //create an add with required parameters
         Ad ad = new Ad(
-            user.getId(),
-            request.getParameter("title"),
-            request.getParameter("description")
+                user.getId(),
+                request.getParameter("title"),
+                Integer.parseInt(request.getParameter("releaseYear")),
+                Integer.parseInt(request.getParameter("rating")),
+                request.getParameter("description"),
+                Integer.parseInt(request.getParameter("price"))
         );
+        //input the add into the DB
         DaoFactory.getAdsDao().insert(ad);
-        response.sendRedirect("/ads");
+
+//        This is for being able to see the genre of each ad.
+        String[] genres = request.getParameterValues("genre");
+
+        System.out.printf("Title: %s%nRelease Year: %d%nRating: %d%nDescription: %s%nPrice: %d%nUser input:%s-%d%n", ad.getAd_name(), ad.getRelease_year(), ad.getRating(), ad.getDescription(), ad.getPrice(), user.getUsername(), ad.getUser_id());
+
+        if (genres != null) {
+            for (String genre : genres) {
+                int genreValue = Integer.parseInt(genre);
+                System.out.println(genreValue);
+            }
+        }
+
+        response.sendRedirect("/ads/create");
     }
 }

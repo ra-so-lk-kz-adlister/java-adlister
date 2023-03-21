@@ -13,8 +13,12 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/logout">Logout</a></li>
+            <c:if test="${sessionScope.user == null}">
+                <li><a href="/login.jsp">Login</a></li>
+            </c:if>
+            <c:if test="${sessionScope.user != null}">
+                <li><a href="/logout.jsp">Logout</a></li>
+            </c:if>
 
         </ul>
     </div><!-- /.navbar-collapse -->
