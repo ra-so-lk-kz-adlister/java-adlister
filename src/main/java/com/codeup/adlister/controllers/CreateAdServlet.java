@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Genre;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -33,20 +34,25 @@ public class CreateAdServlet extends HttpServlet {
                 Integer.parseInt(request.getParameter("price"))
         );
         //input the add into the DB
-        DaoFactory.getAdsDao().insert(ad);
+        Integer num = DaoFactory.getAdsDao().insert(ad).intValue();
+        //func created to find the ad id from the ad name
 
-//        This is for being able to see the genre of each ad.
+        //This is for being able to see the genre of each ad.
         String[] genres = request.getParameterValues("genre");
-
-        System.out.printf("Title: %s%nRelease Year: %d%nRating: %d%nDescription: %s%nPrice: %d%nUser input:%s-%d%n", ad.getAd_name(), ad.getRelease_year(), ad.getRating(), ad.getDescription(), ad.getPrice(), user.getUsername(), ad.getUser_id());
-
-        if (genres != null) {
+        if (genres != null && (num != null)) {
             for (String genre : genres) {
-                int genreValue = Integer.parseInt(genre);
-                System.out.println(genreValue);
+                int genreId = Integer.parseInt(genre);
+
+                System.out.println(genreId);
+
+                Genre type = new Genre(num, genreId);
+                DaoFactory.getGenresDao().insert(type);
+
+                System.out.println(DaoFactory.getGenresDao().findGenreNameById(genreId));
+
             }
         }
 
-        response.sendRedirect("/ads/create");
+        response.sendRedirect("/ads");
     }
 }
