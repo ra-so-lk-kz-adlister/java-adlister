@@ -30,3 +30,5 @@ VALUES ('Fighter'),
        ('Racer'),
        ('Classic');
 
+
+

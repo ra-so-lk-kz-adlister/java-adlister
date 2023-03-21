@@ -2,7 +2,8 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.Config;
 import com.codeup.adlister.models.Ad;
-import com.codeup.adlister.Config;
+delete-function
+
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
@@ -50,6 +51,7 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error searching for user.", e);
         }
     }
+
     @Override
     public Long insert(Ad ad) {
         try {
@@ -89,4 +91,19 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+
+
+
+    public void deleteAd(int id) {
+        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM arcade_ads WHERE id = ?")) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to delete ad");
+        }
+    }
+
+
 }
