@@ -6,9 +6,9 @@ USE arcade_db;
 
 CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_name VARCHAR(50),
-    user_email VARCHAR(100) NOT NULL,
-    user_password TEXT NOT NULL
+    username VARCHAR(50),
+    email VARCHAR(100) NOT NULL,
+    password TEXT NOT NULL
 );
 
 CREATE TABLE arcade_ads (
