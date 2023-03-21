@@ -19,7 +19,6 @@
             </ul>
         </div>
 
-
         <ul class="nav navbar-nav navbar-right">
             <c:choose>
                 <c:when test="${sessionScope.user == null}">
