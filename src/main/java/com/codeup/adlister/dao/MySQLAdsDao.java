@@ -6,9 +6,6 @@ import com.codeup.adlister.Config;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,8 +73,8 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-                rs.getLong("id"),
-                rs.getLong("user_id"),
+                rs.getInt("id"),
+                rs.getInt("user_id"),
                 rs.getString("ad_name"),
                 rs.getInt("release_year"),
                 rs.getInt("rating"),

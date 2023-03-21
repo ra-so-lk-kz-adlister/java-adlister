@@ -14,8 +14,11 @@
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
+            <h2>${ad.ad_name}</h2>
+            <p>${ad.rating}/5</p>
+            <p>$${ad.price/100}</p>
+
+
             <input type="submit" class="btn btn-primary btn-block" value="See Details">
         </div>
     </c:forEach>
