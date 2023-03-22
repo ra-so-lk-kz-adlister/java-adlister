@@ -6,7 +6,6 @@
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
-
     </jsp:include>
 </head>
 <body>
@@ -14,7 +13,9 @@
 
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
-
+        <form action="/profile/edit">
+            <input type="submit" value="Edit Profile" class="btn btn-secondary btn-block">
+        </form>
 
     <c:forEach var="ad" items="${ads}">
 
