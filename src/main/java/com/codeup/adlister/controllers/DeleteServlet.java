@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "DeleteServlet", value = "/delete")
 public class DeleteServlet extends HttpServlet {
