@@ -13,7 +13,7 @@ public interface Ads {
     Long insert(Ad ad);
 
 //    List<Ad>all(User user);
-
+List<Ad> findById2(int userId);
     Ad findById(int userId);
 
     void deleteAd(Ad ad);
