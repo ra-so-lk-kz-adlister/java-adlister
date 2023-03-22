@@ -17,6 +17,10 @@
             <input type="submit" value="Edit Profile" class="btn btn-secondary btn-block">
         </form>
 
+        <form action="/profile/delete">
+            <input type="submit" value="Delete Profile" class="btn btn-warning btn-block">
+        </form>
+
     <c:forEach var="ad" items="${ads}">
 
         <c:if test="${ad.user_id == sessionScope.user.id}">

@@ -1,6 +1,6 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.Config;
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
@@ -79,5 +79,18 @@ public class MySQLUsersDao implements Users {
             rs.getString("password")
         );
     }
+
+    public void deleteUser(User user) {
+        try {
+            String query = "DELETE FROM users WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, user.getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to delete user");
+        }
+    }
+
 
 }
