@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "DeleteProfileServlet", value = "/profile/delete")
 public class DeleteProfileServlet extends HttpServlet {
@@ -28,6 +29,11 @@ public class DeleteProfileServlet extends HttpServlet {
         User user = DaoFactory.getUsersDao().findByUsername(userCurrent.getUsername());
 
         if (user != null && user.getId() == userCurrent.getId() ) {
+            List<Ad> ads = DaoFactory.getAdsDao().findById2(user.getId());
+            for(Ad ad: ads){
+                DaoFactory.getGenresDao().deleteGenre(ad.getId());
+                DaoFactory.getAdsDao().deleteAd(ad);
+            }
             DaoFactory.getUsersDao().deleteUser(user);
             response.sendRedirect("/logout");
         }
