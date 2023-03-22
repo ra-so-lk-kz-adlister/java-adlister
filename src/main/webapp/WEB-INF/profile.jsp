@@ -31,10 +31,15 @@
             <p>$${ad.price/100}</p>
             <p><i>
                 <c:forEach var="genre" items="${genres}">
-                    <c:if test="${genre.ad_id == ad.id && ad.user_id == sessionScope.user.id}">|${genre.genreName}| </c:if>
+                    <c:if test="${genre.ad_id == ad.id && ad.user_id == sessionScope.user.id}">|
+                        ${genre.genreName}|
+                    </c:if>
                 </c:forEach>
             </i></p>
-            <input type="submit" class="btn btn-primary btn-block" value="See Details">
+            <form action="/detail" method="GET">
+                <input type="hidden" name="adId" value="${ad.id}" />
+                <button type="submit" class="btn btn-danger">See Details</button>
+            </form>
 
             <form action="${pageContext.request.contextPath}/delete" method="post">
                 <input type="hidden" name="delete_id" value="${ad.id}" />
