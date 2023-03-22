@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -11,8 +12,12 @@ public interface Ads {
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
 
-    ResultSet findById(int userId);
+//    List<Ad>all(User user);
 
-    void deleteAd(int id);
+    Ad findById(int userId);
+
+    void deleteAd(Ad ad);
+
+    void editAd(int adId, String adName, int releaseYear, int rating, String description, double price);
 
 }

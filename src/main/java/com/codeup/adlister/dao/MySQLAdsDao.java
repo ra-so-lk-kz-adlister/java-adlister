@@ -36,19 +36,32 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+//    @Override
+//    public ResultSet findById(int userId) {
+//        try {
+//            String insertQuery = "SELECT * FROM users WHERE id LIKE ?";
+//            PreparedStatement stmt = connection.prepareStatement(insertQuery);
+//            stmt.setInt(1, userId);
+//            stmt.executeQuery();
+//            return stmt.getResultSet();
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error searching for user.", e);
+//        }
+//    }
+
     @Override
-    public ResultSet findById(int userId) {
+    public Ad findById(int adsId) {
         try {
-            String insertQuery = "SELECT * FROM users WHERE id LIKE ?";
+            String insertQuery = "SELECT * FROM arcade_ads WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(insertQuery);
-            stmt.setInt(1, userId);
-            stmt.executeQuery();
-            return stmt.getResultSet();
+            stmt.setInt(1, adsId);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return extractAd(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error searching for user.", e);
         }
     }
-
 
 
     @Override
@@ -94,10 +107,33 @@ public class MySQLAdsDao implements Ads {
 
 
 
-    public void deleteAd(int id) {
-        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM arcade_ads WHERE id = ?")) {
-            statement.setInt(1, id);
+    public void deleteAd(Ad ad) {
+        try {
+            String query = "DELETE FROM arcade_ads WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, ad.getId());
             statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to delete ad");
+        }
+    }
+
+
+
+    public void editAd(int adId, String adName, int releaseYear, int rating, String description, double price){
+        try {
+            String query = "UPDATE arcade_ads SET ad_name = ?, release_year = ?, rating = ?, description = ?, price = ? WHERE user_id = ? AND id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, adName);
+            stmt.setInt(2, releaseYear);
+            stmt.setInt(3, rating);
+            stmt.setString(4, description);
+            stmt.setDouble(5, price);
+            stmt.setInt(6, adId);
+            stmt.executeUpdate();
+
+
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Failed to delete ad");

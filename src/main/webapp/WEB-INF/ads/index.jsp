@@ -19,10 +19,7 @@
             <p>$${ad.price/100}</p>
 
             <input type="submit" class="btn btn-primary btn-block" value="See Details">
-            <form action="${pageContext.request.contextPath}/delete" method="post">
-                <input type="hidden" name="id" value="${ad.id}" />
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+
         </div>
 
     </c:forEach>

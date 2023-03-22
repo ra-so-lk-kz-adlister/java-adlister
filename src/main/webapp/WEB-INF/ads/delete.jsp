@@ -10,11 +10,20 @@
 <head>
     <title>Title</title>
 </head>
-<h1>Are you sure that you want to delete this file?</h1>
-<form action="${pageContext.request.contextPath}/delete" method="post">
-  <button type="submit" class="btn btn-danger">Delete</button>
-</form>
+
 <body>
 
+<h1>Delete Ad</h1>
+
+<p>Are you sure you want to delete this ad?</p>
+
+    <div class="card col-md-6" id="${ad.id}">
+
+        <form action="${pageContext.request.contextPath}/delete" method="POST">
+            <input type="hidden" name="delete_id" value="${id}">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+
+    </div>
 </body>
 </html>
