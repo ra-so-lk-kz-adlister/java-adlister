@@ -18,14 +18,24 @@ import java.util.List;
 @WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") == null) {
+
+        User user = (User) request.getSession().getAttribute("user");
+
+        if (user == null) {
             response.sendRedirect("/login");
             return;
         }
-        User user = (User) request.getSession().getAttribute("user");
-       request.setAttribute("games", DaoFactory.getAdsDao().findById(user.getId()));
-//        request.setAttribute("games", DaoFactory.getAdsDao().all());
+
+        request.setAttribute("ads", DaoFactory.getAdsDao().all());
+
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        User user = (User) request.getSession().getAttribute("user");
+        request.getSession().setAttribute("user", user);
+        response.sendRedirect(request.getContextPath() + "/delete");
     }
 }
 

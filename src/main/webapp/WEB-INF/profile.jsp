@@ -1,4 +1,3 @@
-<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -14,23 +13,34 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome <br>      ${sessionScope.user.username}!</h1>
-        <p>email:${sessionScope.user.email}</p>
+        <h1>Welcome, ${sessionScope.user.username}!</h1>
 
-        <h1>Your Posted Arcade Games:</h1>
-        <p>test</p>
-        <c:set var="games" value="${requestScope.games}" />
-        <c:forEach var="game" items="${games}">
-            <div class="col-md-6" id="games.id">
-                <h2>${game.ad_name}</h2>
-                <p>${game.description}</p>
-                <p>test: ${game.rating}</p>
-                <p>${game.price}</p>
-                <input type="submit" class="btn btn-primary btn-block" value="See Details">
 
-            </div>
-        </c:forEach>
+    <c:forEach var="ad" items="${ads}">
+
+        <c:if test="${ad.user_id == sessionScope.user.id}">
+
+        <div class="card col-md-6" id="${ad.id}">
+            <h2>${ad.ad_name}</h2>
+            <p>${ad.rating}/5</p>
+            <p>$${ad.price/100}</p>
+
+            <input type="submit" class="btn btn-primary btn-block" value="See Details">
+
+            <form action="${pageContext.request.contextPath}/delete" method="post">
+                <input type="hidden" name="delete_id" value="${ad.id}" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+
+            <form action="${pageContext.request.contextPath}/edit" method="post">
+                <input type="hidden" name="edit_id" value="${ad.id}" />
+                <button type="submit" class="btn btn-light">Edit</button>
+            </form>
+        </div>
+        </c:if>
+    </c:forEach>
     </div>
+
 
 </body>
 </html>
