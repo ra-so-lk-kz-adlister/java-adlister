@@ -13,6 +13,18 @@
     <div class="column">
         <div class="row ">
             <h1 class="text-center m-5">Here Are All The Ads!</h1>
+
+    <c:forEach var="ad" items="${ads}">
+        <div class="col-md-6" id="${ad.id}">
+            <h2>${ad.ad_name}</h2>
+            <p>${ad.rating}/5</p>
+            <p>$${ad.price/100}</p>
+            <p><i>
+                <c:forEach var="genre" items="${genres}">
+                    <c:if test="${genre.ad_id == ad.id}">|${genre.genreName}| </c:if>
+                </c:forEach>
+            </i></p>
+            <input type="submit" class="btn btn-primary btn-block" value="See Details">
         </div>
 
         <div class="row justify-content-center gap-3">

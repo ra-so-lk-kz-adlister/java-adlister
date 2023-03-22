@@ -35,7 +35,6 @@ public class CreateAdServlet extends HttpServlet {
         );
         //input the add into the DB
         Integer num = DaoFactory.getAdsDao().insert(ad).intValue();
-        //func created to find the ad id from the ad name
 
         //This is for being able to see the genre of each ad.
         String[] genres = request.getParameterValues("genre");
@@ -43,13 +42,8 @@ public class CreateAdServlet extends HttpServlet {
             for (String genre : genres) {
                 int genreId = Integer.parseInt(genre);
 
-                System.out.println(genreId);
-
                 Genre type = new Genre(num, genreId);
                 DaoFactory.getGenresDao().insert(type);
-
-                System.out.println(DaoFactory.getGenresDao().findGenreNameById(genreId));
-
             }
         }
 

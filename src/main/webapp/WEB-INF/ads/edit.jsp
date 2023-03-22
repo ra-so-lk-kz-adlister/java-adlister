@@ -38,6 +38,33 @@
                 <span class="input-group-text col-2" id="rating">Rating</span>
                 <input  class="form-control" type="number" name="rating" value="${ad.rating}">
             </div>
+            <div class="form-group">
+                <h4>Genre Types</h4>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="genre" name="genre" value="1">
+                    <label class="form-check-label" for="genre">Fighter</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="genre" name="genre" value="2">
+                    <label class="form-check-label" for="genre">Light Gun</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="genre" name="genre" value="3">
+                    <label class="form-check-label" for="genre">Pinball</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="genre" name="genre" value="4">
+                    <label class="form-check-label" for="genre">Action and Adventure</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="genre" name="genre" value="5">
+                    <label class="form-check-label" for="genre">Racer</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="genre" name="genre" value="6">
+                    <label class="form-check-label" for="genre">Classic</label>
+                </div>
+            </div>
             <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text col-2" id="description">Description</span>
                 <textarea class="form-control" name="description">${ad.description}</textarea>

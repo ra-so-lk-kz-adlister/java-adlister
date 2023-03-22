@@ -20,7 +20,8 @@ public class AdsIndexServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-            request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        request.setAttribute("genres", DaoFactory.getGenresDao().all());
 
 
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
