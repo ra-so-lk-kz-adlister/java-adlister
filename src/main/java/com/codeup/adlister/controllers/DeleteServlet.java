@@ -27,22 +27,10 @@ public class DeleteServlet extends HttpServlet {
         Ad ad = DaoFactory.getAdsDao().findById(sentId);
 
         if (user != null && user.getId() == ad.getUser_id() ) {
+            DaoFactory.getGenresDao().deleteGenre(ad.getId());
             DaoFactory.getAdsDao().deleteAd(ad);
             response.sendRedirect(request.getContextPath() + "/profile");
         }
 
-
-
-//        User user = (User) request.getSession().getAttribute("user");
-//        int id = Integer.parseInt(request.getParameter("id"));
-//
-//        Ad ad = DaoFactory.getAdsDao().findById(id);
-//
-//        if (user != null && user.getId() == ad.getUser_id() ) {
-//            DaoFactory.getAdsDao().deleteAd(id);
-//            response.sendRedirect(request.getContextPath() + "/profile");
-//        }else{
-//            response.sendRedirect(request.getContextPath() + "/profile");
-//        }
     }
 }

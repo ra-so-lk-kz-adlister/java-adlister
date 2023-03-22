@@ -27,6 +27,7 @@ public class ViewProfileServlet extends HttpServlet {
         }
 
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        request.setAttribute("genres", DaoFactory.getGenresDao().all());
 
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
