@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.EditProfileServlet", urlPatterns = "/editprofile")
+@WebServlet(name = "controllers.EditProfileServlet", urlPatterns = "/profile/edit")
 public class EditProfileServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,11 +23,14 @@ public class EditProfileServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/editprofile.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // get user id
+        User oldUser = (User) request.getSession().getAttribute("user");
+
         // validate input
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String passwordConfirmation = request.getParameter("confirm_password");
+        String username = request.getParameter("newUsername");
+        String email = request.getParameter("newEmail");
+        String password = request.getParameter("newPassword");
+        String passwordConfirmation = request.getParameter("newConfirm_password");
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
@@ -39,9 +42,20 @@ public class EditProfileServlet extends HttpServlet {
             response.sendRedirect("/editprofile");
             return;
         }
+
         // create and save a new user
-        User user = new User(username, email, password);
-        DaoFactory.getUsersDao().insert(user);
+        User user = new User(
+                oldUser.getId(),
+                username,
+                email,
+                "filler");
+        user.setPassword(password);
+
+        //update the database
+        DaoFactory.getUsersDao().updateUser(user);
+
+        //redirect with appropriate info
+        request.getSession().setAttribute("user", user);
         response.sendRedirect("/profile");
     }
 }
