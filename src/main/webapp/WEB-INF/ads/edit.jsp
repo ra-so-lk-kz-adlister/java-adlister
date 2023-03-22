@@ -23,30 +23,30 @@
     </div>
     <div class="card-body">
         <form method="post">
-                <input type="hidden" name="adId" value="${ad.id}">
-                <input type="hidden" name="adId" value="${ad.user_id}">
+            <input type="hidden" name="adId" value="${ad.id}">
+            <input type="hidden" name="adId" value="${ad.user_id}">
 
             <div class="input-group input-group-sm mb-3">
-                    <span class="input-group-text col-2" id="adName">Name</span>
-                    <input class="form-control" type="text" name="adName" value="${ad.ad_name}">
+                <span class="input-group-text col-2" id="adName">Name</span>
+                <input class="form-control" type="text" name="adName" value="${ad.ad_name}">
             </div>
             <div class="input-group input-group-sm mb-3">
-                    <span class="input-group-text col-2" id="releaseYear">Year</span>
-                    <input class="form-control" type="number" name="releaseYear" value="${ad.release_year}">
+                <span class="input-group-text col-2" id="releaseYear">Year</span>
+                <input class="form-control" type="number" name="releaseYear" value="${ad.release_year}">
             </div>
             <div class="input-group input-group-sm mb-3">
-                    <span class="input-group-text col-2" id="rating">Rating</span>
-                    <input  class="form-control" type="number" name="rating" value="${ad.rating}">
+                <span class="input-group-text col-2" id="rating">Rating</span>
+                <input  class="form-control" type="number" name="rating" value="${ad.rating}">
             </div>
             <div class="input-group input-group-sm mb-3">
-                    <span class="input-group-text col-2" id="description">Description</span>
-                    <textarea class="form-control" name="description">${ad.description}</textarea>
+                <span class="input-group-text col-2" id="description">Description</span>
+                <textarea class="form-control" name="description">${ad.description}</textarea>
             </div>
             <div class="input-group input-group-sm mb-3">
-                    <span class="input-group-text col-2" id="price">Price</span>
-                    <input  class="form-control" type="number"  name="price" value="${ad.price}">
+                <span class="input-group-text col-2" id="price">Price</span>
+                <input  class="form-control" type="number"  name="price" value="${ad.price}">
             </div>
-                <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
 </div>

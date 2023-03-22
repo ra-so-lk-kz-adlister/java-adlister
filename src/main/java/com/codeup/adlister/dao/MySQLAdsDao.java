@@ -1,6 +1,5 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.Config;
 import com.codeup.adlister.models.Ad;
 
 
@@ -125,7 +124,7 @@ public class MySQLAdsDao implements Ads {
 
     public void editAd(int adId, String adName, int releaseYear, int rating, String description, double price){
         try {
-            String query = "UPDATE arcade_ads SET ad_name = ?, release_year = ?, rating = ?, description = ?, price = ? WHERE user_id = ? AND id = ?";
+            String query = "UPDATE arcade_ads SET ad_name = ?, release_year = ?, rating = ?, description = ?, price = ? WHERE  id = ?";
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, adName);
             stmt.setInt(2, releaseYear);
