@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
@@ -23,6 +27,7 @@ public class ViewProfileServlet extends HttpServlet {
         }
 
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
+
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -33,3 +38,4 @@ public class ViewProfileServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/delete");
     }
 }
+

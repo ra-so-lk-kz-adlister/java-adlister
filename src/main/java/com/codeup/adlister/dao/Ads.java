@@ -20,4 +20,6 @@ public interface Ads {
 
     void editAd(int adId, String adName, int releaseYear, int rating, String description, double price);
 
+    //List<Ad> findById(int userId);
+    //void deleteAd(int id);
 }

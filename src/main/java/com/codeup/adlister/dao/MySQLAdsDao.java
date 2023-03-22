@@ -1,6 +1,9 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.Config;
 import com.codeup.adlister.models.Ad;
+
+
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
@@ -62,7 +65,6 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error searching for user.", e);
         }
     }
-
 
     @Override
     public Long insert(Ad ad) {

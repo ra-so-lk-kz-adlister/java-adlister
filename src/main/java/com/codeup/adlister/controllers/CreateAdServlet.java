@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Genre;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -18,18 +19,40 @@ public class CreateAdServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
-            .forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
+        //create an add with required parameters
         Ad ad = new Ad(
-            user.getId(),
-            request.getParameter("title"),
-            request.getParameter("description")
+                user.getId(),
+                request.getParameter("title"),
+                Integer.parseInt(request.getParameter("releaseYear")),
+                Integer.parseInt(request.getParameter("rating")),
+                request.getParameter("description"),
+                Integer.parseInt(request.getParameter("price"))
         );
-        DaoFactory.getAdsDao().insert(ad);
+        //input the add into the DB
+        Integer num = DaoFactory.getAdsDao().insert(ad).intValue();
+        //func created to find the ad id from the ad name
+
+        //This is for being able to see the genre of each ad.
+        String[] genres = request.getParameterValues("genre");
+        if (genres != null && (num != null)) {
+            for (String genre : genres) {
+                int genreId = Integer.parseInt(genre);
+
+                System.out.println(genreId);
+
+                Genre type = new Genre(num, genreId);
+                DaoFactory.getGenresDao().insert(type);
+
+                System.out.println(DaoFactory.getGenresDao().findGenreNameById(genreId));
+
+            }
+        }
+
         response.sendRedirect("/ads");
     }
 }
