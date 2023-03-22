@@ -14,9 +14,16 @@ public class EditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
 
+        User user = (User) request.getSession().getAttribute("user");
+
+        int sentId = Integer.parseInt( request.getParameter("edit_id"));
+        Ad ad = DaoFactory.getAdsDao().findById(sentId);
+
+
+        request.setAttribute("ad", ad);
+
+        request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
 
     }
 
@@ -30,17 +37,7 @@ public class EditServlet extends HttpServlet {
         String description = request.getParameter("description");
         int price = Integer.parseInt(request.getParameter("price"));
 
-
-
-
-        int sentId = Integer.parseInt(request.getParameter("id"));
-        User user = (User) request.getSession().getAttribute("user");
-
-        Ad ad = DaoFactory.getAdsDao().findById(sentId);
-
-        if (user != null && user.getId() == ad.getUser_id() ) {
-            DaoFactory.getAdsDao().editAd(adId, adName, releaseYear, rating, description, price);
-            response.sendRedirect(request.getContextPath() + "/profile");
-        }
+        DaoFactory.getAdsDao().editAd(adId, adName, releaseYear, rating, description, price);
+        response.sendRedirect("/profile");
     }
 }
