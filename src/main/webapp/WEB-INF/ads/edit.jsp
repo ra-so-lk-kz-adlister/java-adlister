@@ -10,40 +10,46 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="Viewing All The Ads" />
+    </jsp:include>
 </head>
 <body>
 
 
+<div class="card text-center" style="width: 18rem">
+    <div class="card-header">
+        Edit
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <input type="hidden" name="adId" value="${ad.id}">
+            <input type="hidden" name="adId" value="${ad.user_id}">
 
-<c:forEach items="${ads}" var="ad">
-
-    <c:if test="${ad.user_id == sessionScope.user.id}">
-
-    <form method="post" action="DeleteServlet">
-        <input type="hidden" name="adId" value="${ad.adId}">
-
-        <label for="adName">Ad Name:</label>
-        <input type="text" name="adName" value="${ad.adName}">
-
-        <label for="releaseYear">Release Year:</label>
-        <input type="number" name="releaseYear" value="${ad.releaseYear}">
-
-        <label for="rating">Rating:</label>
-        <input type="number" name="rating" value="${ad.rating}">
-
-        <label for="description">Description:</label>
-        <textarea name="description">${ad.description}</textarea>
-
-        <label for="price">Price:</label>
-        <input type="number" step="0.01" name="price" value="${ad.price}">
-
-        <input type="submit" value="Save Changes">
-    </form>
-    </c:if>
-</c:forEach>
-
-
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text col-2" id="adName">Name</span>
+                <input class="form-control" type="text" name="adName" value="${ad.ad_name}">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text col-2" id="releaseYear">Year</span>
+                <input class="form-control" type="number" name="releaseYear" value="${ad.release_year}">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text col-2" id="rating">Rating</span>
+                <input  class="form-control" type="number" name="rating" value="${ad.rating}">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text col-2" id="description">Description</span>
+                <textarea class="form-control" name="description">${ad.description}</textarea>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text col-2" id="price">Price</span>
+                <input  class="form-control" type="number"  name="price" value="${ad.price}">
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
