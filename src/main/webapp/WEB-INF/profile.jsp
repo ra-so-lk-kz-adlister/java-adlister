@@ -6,7 +6,6 @@
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
-
     </jsp:include>
 </head>
 <body>
@@ -32,7 +31,7 @@
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>
 
-            <form action="${pageContext.request.contextPath}/edit" method="post">
+            <form action="${pageContext.request.contextPath}/edit" method="get">
                 <input type="hidden" name="edit_id" value="${ad.id}" />
                 <button type="submit" class="btn btn-light">Edit</button>
             </form>
