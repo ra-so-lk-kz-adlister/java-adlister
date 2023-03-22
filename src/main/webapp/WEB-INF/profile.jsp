@@ -25,6 +25,7 @@
                 <h2>${game.ad_name}</h2>
                 <p>${game.description}</p>
                 <p>test: ${game.rating}</p>
+                <p>${game.price}</p>
                 <input type="submit" class="btn btn-primary btn-block" value="See Details">
 
             </div>
