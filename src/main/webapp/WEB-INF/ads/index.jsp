@@ -14,6 +14,10 @@
         <div class="row ">
             <h1 class="text-center m-5">Here Are All The Ads!</h1>
         </div>
+        <form action="/ads" method="post">
+            <label for="organize">Organize: </label>
+            <input id="organize" name="organize" type="submit" class="btn btn-outline-secondary" value=" Asc | Desc">
+        </form>
     <c:forEach var="ad" items="${ads}">
         <div class="row justify-content-center gap-3" id="${ad.id}">
                 <div class="card border border-2 border-dark shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 25rem;">
