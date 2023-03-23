@@ -64,7 +64,7 @@
     }
     h1 {
         animation: flicker 1.5s infinite alternate;
-        font-size: 9.5rem;
+        font-size: 8rem;
         text-align: center;
         text-transform: uppercase;
         font-weight: 400;

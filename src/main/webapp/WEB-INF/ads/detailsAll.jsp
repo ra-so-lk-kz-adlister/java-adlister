@@ -6,20 +6,15 @@
   <jsp:include page="/WEB-INF/partials/head.jsp">
     <jsp:param name="title" value="Your Profile" />
   </jsp:include>
+  <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+    <jsp:param name="style" value="style"/>
+  </jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
   <h1>Welcome, ${sessionScope.user.username}!</h1>
-  <div class="row d-flex justify-content-center">
-    <form class="d-flex column" action="/profile/edit">
-      <input type="submit" value="Edit Profile" class="btn btn-secondary btn-block">
-    </form>
 
-    <form class="d-flex column" action="/profile/delete">
-      <input type="submit" value="Delete Profile" class="btn btn-warning btn-block">
-    </form>
-  </div>
   <div class="d-flex justify-content-center gap-3">
     <c:forEach var="detail" items="${details}">
         <div class="card border border-2 border-dark shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 25rem;">
