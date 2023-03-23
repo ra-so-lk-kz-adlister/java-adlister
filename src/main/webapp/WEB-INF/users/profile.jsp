@@ -34,17 +34,23 @@
                     <c:if test="${genre.ad_id == ad.id && ad.user_id == sessionScope.user.id}">|${genre.genreName}| </c:if>
                 </c:forEach>
             </i></p>
-            <input type="submit" class="btn btn-primary btn-block" value="See Details">
+            <div class="d-flex justify-content-between">
 
-            <form action="${pageContext.request.contextPath}/delete" method="post">
-                <input type="hidden" name="delete_id" value="${ad.id}" />
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+                <form action="${pageContext.request.contextPath}/detail" method="get">
+                    <input type="hidden" name="delete_id" value="${ad.id}" />
+                    <button type="submit" class="btn btn-primary">See Details</button>
+                </form>
 
-            <form action="${pageContext.request.contextPath}/edit" method="get">
-                <input type="hidden" name="edit_id" value="${ad.id}" />
-                <button type="submit" class="btn btn-light">Edit</button>
-            </form>
+                <form action="${pageContext.request.contextPath}/delete" method="post">
+                    <input type="hidden" name="delete_id" value="${ad.id}" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+                <form action="${pageContext.request.contextPath}/edit" method="get">
+                    <input type="hidden" name="edit_id" value="${ad.id}" />
+                    <button type="submit" class="btn btn-light">Edit</button>
+                </form>
+            </div>
         </div>
         </c:if>
     </c:forEach>
