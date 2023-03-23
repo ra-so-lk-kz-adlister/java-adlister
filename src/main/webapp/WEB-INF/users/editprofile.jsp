@@ -14,7 +14,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
   <h1>Edit Profile ${user.username}</h1>
-  <form method="post">
+  <form method="post" action="/profile/edit">
     <div class="form-group">
       <label for="newUsername">Username</label>
       <input id="newUsername" name="newUsername" class="form-control" type="text" placeholder="${user.username}">

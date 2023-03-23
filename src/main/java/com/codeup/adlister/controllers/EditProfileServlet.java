@@ -20,7 +20,7 @@ public class EditProfileServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/editprofile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/users/editprofile.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // get user id
@@ -39,7 +39,7 @@ public class EditProfileServlet extends HttpServlet {
                 || (! password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
-            response.sendRedirect("/editprofile");
+            response.sendRedirect("/profile/edit");
             return;
         }
 
