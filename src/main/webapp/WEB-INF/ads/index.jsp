@@ -5,7 +5,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
-    <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+    <jsp:include page="/WEB-INF/partials/indexAdsCss.jsp">
         <jsp:param name="style" value="style"/>
     </jsp:include>
 </head>
@@ -17,9 +17,9 @@
 
         <h1 class="text-center my-5">Here Are All The Ads!</h1>
 
-        <form action="/ads" method="post">
+        <form class="text-light d-flex justify-content-center" action="/ads" method="post">
             <label for="organize">Organize: </label>
-            <input id="organize" name="organize" type="submit" class="btn btn-outline-secondary" value=" Asc | Desc">
+            <input id="organize" name="organize" type="submit" class="btn btn-outline-light" value=" Asc | Desc">
         </form>
     <c:forEach var="detail" items="${details}">
                 <div class="card border border-2 border-dark shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 25rem;">
