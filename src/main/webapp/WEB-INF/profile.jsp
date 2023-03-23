@@ -39,20 +39,24 @@
                     </c:if>
                 </c:forEach>
             </i></p>
-            <form action="/detail" method="GET">
-                <input type="hidden" name="adId" value="${ad.id}" />
-                <button type="submit" class="btn btn-danger">See Details</button>
-            </form>
+            <div class="d-flex justify-content-between">
 
-            <form action="${pageContext.request.contextPath}/delete" method="post">
-                <input type="hidden" name="delete_id" value="${ad.id}" />
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+                <form action="${pageContext.request.contextPath}/detail" method="get">
+                    <input type="hidden" name="delete_id" value="${ad.id}" />
+                    <button type="submit" class="btn btn-primary">See Details</button>
+                </form>
 
-            <form action="${pageContext.request.contextPath}/edit" method="get">
-                <input type="hidden" name="edit_id" value="${ad.id}" />
-                <button type="submit" class="btn btn-light">Edit</button>
-            </form>
+                <form action="${pageContext.request.contextPath}/delete" method="post">
+                    <input type="hidden" name="delete_id" value="${ad.id}" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+                <form action="${pageContext.request.contextPath}/edit" method="get">
+                    <input type="hidden" name="edit_id" value="${ad.id}" />
+                    <button type="submit" class="btn btn-light">Edit</button>
+                </form>
+            </div>
+
         </div>
         </c:if>
     </c:forEach>
