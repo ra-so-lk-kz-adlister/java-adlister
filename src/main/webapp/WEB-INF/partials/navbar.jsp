@@ -25,6 +25,7 @@
             <ul class="navbar-nav">
                 <c:choose>
                     <c:when test="${sessionScope.user == null}">
+                        <li><a class="nav-link" href="/register">Register</a></li>
                         <li><a class="nav-link" href="login">Login</a></li>
                         <br />
                     </c:when>
