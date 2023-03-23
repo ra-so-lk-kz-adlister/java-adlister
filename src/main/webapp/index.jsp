@@ -5,14 +5,14 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Welcome to my site!" />
     </jsp:include>
-    <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+    <jsp:include page="/WEB-INF/partials/indexCss.jsp">
         <jsp:param name="style" value="style"/>
     </jsp:include>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
-        <h1>Welcome to the Adlister!</h1>
+        <h1>Arcade Trader</h1>
     </div>
 </body>
 </html>
