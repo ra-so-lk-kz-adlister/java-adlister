@@ -42,7 +42,7 @@
             <div class="d-flex justify-content-between">
 
                 <form action="${pageContext.request.contextPath}/detail" method="get">
-                    <input type="hidden" name="delete_id" value="${ad.id}" />
+                    <input type="hidden" name="detail_id" value="${ad.id}" />
                     <button type="submit" class="btn btn-primary">See Details</button>
                 </form>
 

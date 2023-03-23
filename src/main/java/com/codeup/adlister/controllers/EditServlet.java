@@ -23,7 +23,6 @@ public class EditServlet extends HttpServlet {
 
 
         request.setAttribute("ad", ad);
-
         request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
 
     }
