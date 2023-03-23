@@ -27,8 +27,10 @@ public class ViewAdDetailServlet extends HttpServlet {
             return;
         }
 
-        int num = Integer.parseInt(request.getParameter("adId"));
-        Ad helperAd = DaoFactory.getAdsDao().findById(num);
+
+        int sentId = Integer.parseInt( request.getParameter("detail_id"));
+        Ad helperAd = DaoFactory.getAdsDao().findById(sentId);
+
         List<Ad> helperList = new ArrayList<>();
         helperList.add(helperAd);
         request.setAttribute("details", helperList);

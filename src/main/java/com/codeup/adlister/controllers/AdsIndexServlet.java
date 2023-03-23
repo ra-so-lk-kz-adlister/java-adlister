@@ -56,8 +56,7 @@ public class AdsIndexServlet extends HttpServlet {
                 }
             });
         }
-        request.setAttribute("ads", ads);
-
+        request.setAttribute("details", DaoFactory.getAdsDao().all());
         request.setAttribute("genres", DaoFactory.getGenresDao().all());
 
 

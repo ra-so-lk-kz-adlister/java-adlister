@@ -23,22 +23,22 @@
             <input id="organize" name="organize" type="submit" class="btn btn-outline-secondary" value=" Asc | Desc">
         </form>
         <div class="row d-flex">
-    <c:forEach var="ad" items="${ads}">
-        <div class="row justify-content-center gap-3" id="${ad.id}">
+    <c:forEach var="detail" items="${details}">
+        <div class="row justify-content-center gap-3" id="${detail.id}">
                 <div class="card border border-2 border-dark shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 25rem;">
                     <img src="https://wallpaperaccess.com/full/236572.jpg" class="card-img border border-1" alt="mario">
                     <div class="card-body">
-                        <div class="col-md-12" id="${ad.id}">
-                            <h2>${ad.ad_name}</h2>
-                            <p>${ad.rating}/5</p>
-                            <p>$${ad.price/100}</p>
+                        <div class="col-md-12" id="${detail.id}">
+                            <h2>${detail.ad_name}</h2>
+                            <p>${detail.rating}/5</p>
+                            <p>$${detail.price/100}</p>
                             <p><i>
                                 <c:forEach var="genre" items="${genres}">
-                                    <c:if test="${genre.ad_id == ad.id}">|${genre.genreName}| </c:if>
+                                    <c:if test="${genre.ad_id == detail.id}">|${genre.genreName}| </c:if>
                                 </c:forEach>
                             </i></p>
                             <form action="/detail" method="GET">
-                                <input type="hidden" name="adId" value="${ad.id}" />
+                                <input type="hidden" name="adId" value="${detail.id}" />
                                 <button type="submit" class="btn btn-danger">See Details</button>
                             </form>
                         </div>
