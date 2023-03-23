@@ -29,7 +29,7 @@ public class ViewProfileServlet extends HttpServlet {
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
         request.setAttribute("genres", DaoFactory.getGenresDao().all());
 
-        request.getRequestDispatcher("/WEB-INF/users/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
