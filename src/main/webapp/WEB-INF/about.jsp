@@ -15,6 +15,8 @@
     <jsp:param name="style" value="style"/>
   </jsp:include></head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
 <div class="container ">
   <div class="row">
     <div class="card border-warning p-0 text-light bg-dark">

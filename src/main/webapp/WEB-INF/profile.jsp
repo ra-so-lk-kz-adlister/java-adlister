@@ -7,7 +7,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
-    <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+    <jsp:include page="/WEB-INF/partials/profileCss.jsp">
         <jsp:param name="style" value="style"/>
     </jsp:include>
 </head>
