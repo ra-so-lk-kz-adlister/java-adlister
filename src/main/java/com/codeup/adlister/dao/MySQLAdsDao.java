@@ -39,18 +39,18 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-//    @Override
-//    public ResultSet findById(int userId) {
-//        try {
-//            String insertQuery = "SELECT * FROM users WHERE id LIKE ?";
-//            PreparedStatement stmt = connection.prepareStatement(insertQuery);
-//            stmt.setInt(1, userId);
-//            stmt.executeQuery();
-//            return stmt.getResultSet();
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error searching for user.", e);
-//        }
-//    }
+    @Override
+    public List<Ad> findById2(int userId) {
+        try {
+            String insertQuery = "SELECT * FROM arcade_ads WHERE arcade_ads.user_id LIKE ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery);
+            stmt.setInt(1, userId);
+            stmt.executeQuery();
+            return createAdsFromResults(stmt.getResultSet());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error searching for user.", e);
+        }
+    }
 
     @Override
     public Ad findById(int adsId) {

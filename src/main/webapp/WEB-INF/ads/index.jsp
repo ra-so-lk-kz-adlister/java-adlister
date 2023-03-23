@@ -5,6 +5,9 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+    <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+        <jsp:param name="style" value="style"/>
+    </jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />

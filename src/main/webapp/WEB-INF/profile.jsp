@@ -7,6 +7,9 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
+    <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+        <jsp:param name="style" value="style"/>
+    </jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -42,7 +45,7 @@
                                 <input type="hidden" name="adId" value="${ad.id}" />
                                 <button type="submit" class="btn btn-danger">See Details</button>
                             </form>
-
+                            
                             <form action="${pageContext.request.contextPath}/delete" method="post">
                                 <input type="hidden" name="delete_id" value="${ad.id}" />
                                 <button type="submit" class="btn btn-danger">Delete</button>
