@@ -28,7 +28,7 @@
                 <div class="card border border-2 border-dark shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 25rem;">
                     <img src="https://wallpaperaccess.com/full/236572.jpg" class="card-img border border-1" alt="mario">
                     <div class="card-body">
-                        <div class="col-md-12" id="${detail.id}">
+                        <div class="col-md-12 col-6" id="${detail.id}">
                             <h2>${detail.ad_name}</h2>
                             <p>${detail.rating}/5</p>
                             <p>$${detail.price/100}</p>
