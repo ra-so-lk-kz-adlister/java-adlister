@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: kailanzwaschka
   Date: 3/22/23
-  Time: 5:40 PM
+  Time: 10:32 PM
   To change this template use File | Settings | File Templates.
 --%>
 <style>
@@ -25,29 +25,36 @@
 
     h1 {
         animation: flicker 1.5s infinite alternate;
-        font-size: 9.5rem;
+        font-size: 4.5rem;
         text-align: center;
         text-transform: uppercase;
         font-weight: 400;
-        color: #FFFF00;
+        color: #ff0000;
         text-shadow:
                 0 0 7px #fff,
                 0 0 10px #fff,
                 0 0 21px #fff,
-                0 0 42px #FFFF00,
-                0 0 82px #FFFF00,
-                0 0 92px #FFFF00,
-                0 0 102px #FFFF00,
-                0 0 151px #FFFF00;
+                0 0 42px #ff0000,
+                0 0 82px #ff0000,
+                0 0 92px #ff0000,
+                0 0 102px #ff0000,
+                0 0 151px #ff0000;
     }
 
     body {
         margin: 0;
         padding: 0;
-        background: url('https://e1.pxfuel.com/desktop-wallpaper/108/39/desktop-wallpaper-gaming-neon-widescreen-for-full-resolution-on-kecbio-in-2020-arcade-machine.jpg') no-repeat center center fixed;
+
+        background: url('https://wallpapercave.com/wp/wp7072099.jpg')no-repeat center center fixed;
+        /*background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi4tIkpVCSFet4eMuwjRseooRU2L104cyEfA&usqp=CAU') no-repeat center center fixed;*/
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+    }
+    .dis {
+        background-color: transparent;
+        /*color: red;*/
+
     }
 </style>

@@ -21,9 +21,9 @@
     .neon-red {
         color: #ff0000;
         text-shadow:
-                0 0 5px #ff0000,
-                0 0 10px #ff0000,
-                0 0 20px #ff0000,
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
                 0 0 40px #ff0000,
                 0 0 80px #ff0000,
                 0 0 90px #ff0000,
