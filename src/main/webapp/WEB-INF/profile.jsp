@@ -7,6 +7,9 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
+    <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+        <jsp:param name="style" value="style"/>
+    </jsp:include>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -31,7 +34,9 @@
             <p>$${ad.price/100}</p>
             <p><i>
                 <c:forEach var="genre" items="${genres}">
-                    <c:if test="${genre.ad_id == ad.id && ad.user_id == sessionScope.user.id}">|${genre.genreName}| </c:if>
+                    <c:if test="${genre.ad_id == ad.id && ad.user_id == sessionScope.user.id}">|
+                        ${genre.genreName}|
+                    </c:if>
                 </c:forEach>
             </i></p>
             <div class="d-flex justify-content-between">
@@ -51,6 +56,7 @@
                     <button type="submit" class="btn btn-light">Edit</button>
                 </form>
             </div>
+
         </div>
         </c:if>
     </c:forEach>

@@ -5,15 +5,24 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+    <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+        <jsp:param name="style" value="style"/>
+    </jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-<div class="container d-flex">
+<div class="container d-flex justify-content-center">
     <div class="column">
-        <div class="row ">
-            <h1 class="text-center m-5">Here Are All The Ads!</h1>
+        <div class="row">
+            <h1 class="text-center my-5">Here Are All The Ads!</h1>
         </div>
+
+        <form action="/ads" method="post">
+            <label for="organize">Organize: </label>
+            <input id="organize" name="organize" type="submit" class="btn btn-outline-secondary" value=" Asc | Desc">
+        </form>
+        <div class="row d-flex">
     <c:forEach var="ad" items="${ads}">
         <div class="row justify-content-center gap-3" id="${ad.id}">
                 <div class="card border border-2 border-dark shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 25rem;">
@@ -28,14 +37,18 @@
                                     <c:if test="${genre.ad_id == ad.id}">|${genre.genreName}| </c:if>
                                 </c:forEach>
                             </i></p>
-                            <input type="submit" class="btn btn-primary btn-block" value="See Details">
+                            <form action="/detail" method="GET">
+                                <input type="hidden" name="adId" value="${ad.id}" />
+                                <button type="submit" class="btn btn-danger">See Details</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-    </c:forEach>
+        </c:forEach>
+        </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>

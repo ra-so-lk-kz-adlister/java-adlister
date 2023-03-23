@@ -4,6 +4,9 @@
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
+    <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+        <jsp:param name="style" value="style"/>
+    </jsp:include>
 </head>
 <body>
     <jsp:include page="partials/navbar.jsp" />

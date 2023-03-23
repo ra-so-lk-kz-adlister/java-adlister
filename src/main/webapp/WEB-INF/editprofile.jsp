@@ -5,6 +5,9 @@
   <jsp:include page="/WEB-INF/partials/head.jsp">
     <jsp:param name="Edit" value="Edit your password" />
   </jsp:include>
+  <jsp:include page="/WEB-INF/partials/arcardCss.jsp">
+    <jsp:param name="style" value="style"/>
+  </jsp:include>
     <title>Title</title>
 </head>
 <body>
